@@ -1,0 +1,21 @@
+name: Claude Code Analysis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  claude-code:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Claude Code Action Official
+      uses: anthropics/claude-code-action@v1
+      with:
+        api-key: ${{ secrets.ANTHROPIC_API_KEY }}
